@@ -60,13 +60,16 @@ export default function BookingForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
+    const serviceId = selectedService._id != null
+      ? (typeof selectedService._id === "string" ? selectedService._id : String(selectedService._id))
+      : "";
     onSubmit({
       customerName: currentUser.username,
       owner: currentUser.id,
       phoneNumber: phoneNumber.trim(),
       petName: petName.trim(),
       appointmentDateTime: new Date(appointmentDateTime).toISOString(),
-      serviceId: selectedService._id,
+      serviceId,
       notes: notes.trim() || undefined,
     });
   };

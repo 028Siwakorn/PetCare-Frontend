@@ -23,7 +23,8 @@ export default function BookingPage() {
           setServices(res.data);
           const serviceId = location.state?.serviceId;
           if (serviceId) {
-            const svc = res.data.find((s) => s._id === serviceId);
+            const idStr = typeof serviceId === "string" ? serviceId : String(serviceId);
+            const svc = res.data.find((s) => (s._id != null ? String(s._id) : "") === idStr);
             if (svc) setSelectedService(svc);
           }
         }
