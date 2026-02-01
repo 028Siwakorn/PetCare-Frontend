@@ -17,6 +17,9 @@ api.interceptors.request.use((config) => {
 // Services
 export const getServices = () => api.get("/services").then((r) => r.data);
 export const getServiceById = (id) => api.get(`/services/${id}`).then((r) => r.data);
+export const createService = (body) => api.post("/services", body).then((r) => r.data);
+export const updateService = (id, body) => api.put(`/services/${id}`, body).then((r) => r.data);
+export const deleteService = (id) => api.delete(`/services/${id}`).then((r) => r.data);
 
 // Bookings (create: customerName, owner, phoneNumber, petName, appointmentDateTime, serviceId, notes)
 export const createBooking = (body) => api.post("/bookings", body).then((r) => r.data);
